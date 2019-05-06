@@ -5,3 +5,13 @@ code {
 code span {
 	color: #00F;
 }
+
+
+#code p {
+	padding: 0;
+	margin: 0;
+}
+
+form {
+	padding-top: 1em;
+}

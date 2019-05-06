@@ -42,17 +42,50 @@
         </div>
       </div>
     </div>
-    <div class="container">
-      <div id="app">
+    <div id="app">
+      <div class="container" id="code">
         <code>
           <p><span>DELETE FROM</span> `creature_template` <span>WHERE</span> `entry`={{ entry }};</p>
+          <p><span>INSERT INTO</span> `creature_template` (`entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, `KillCredit1`, `KillCredit2`, `modelid1`, `modelid2`, `modelid3`, `modelid4`, `name`, `femaleName`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `HealthScalingExpansion`, `RequiredExpansion`, `VignetteID`, `faction`, `npcflag`, `speed_walk`, `rank`, `dmgschool`, `BaseAttackTime`, `RangeAttackTime`, `BaseVariance`, `RangeVariance`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_class`, `trainer_race`, `type`, `type_flags`, `type_flags2`, `lootid`, `pickpocketloot`, `skinloot`, `resistance1`, `resistance2`, `resistance3`, `resistance4`, `resistance5`, `resistance6`, `spell1`, `spell2`, `spell3`, `spell4`, `spell5`, `spell6`, `spell7`, `spell8`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `InhabitType `, `HealthModifier`, `HealthModifierExtra`, `ManaModifier`, `ManaModifierExtra`, `ArmorModifier`, `DamageModifier`, `ExperienceModifier`, `RacialLeader`, `movementID`, `RegenHealth`, `mechanic_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild`) <span>VALUES</span></p>
+          <p>({{ entry }}, {{ difficulty_entry_1 }}, {{ difficulty_entry_2 }}, {{ difficulty_entry_3 }});</p>
         </code>
+      </div> <!-- /container -->
+      <div class="container">
         <form>
-          <div class="form-group">
-            <label for="EntryInput">Entry</label>
-            <input type="text" class="form-control" id="EntryInput" aria-describedby="EntryinputExample" placeholder="Enter the creature entry" v-model="entry">
-            <small id="EntryinputExample" class="form-text text-muted">Remember that there cannot be 2 creatures with the same entry.</small>
+          <div class="row">
+            <div class="col-12 col-md">
+              <div class="form-group">
+                <label for="EntryInput">Entry</label>
+                <input type="text" class="form-control" id="EntryInput" aria-describedby="EntryinputExample" placeholder="Enter the creature entry" v-model="entry">
+                <small id="EntryinputExample" class="form-text text-muted">Remember that there cannot be 2 creatures with the same entry.</small>
+              </div>
+            </div>
+            <div class="col-12 col-md">
+             <div class="form-group">
+              <label for="difficulty_entry_1">Difficulty entry 1</label>
+              <input type="text" class="form-control" id="difficulty_entry_1" aria-describedby="difficulty_entry_1" placeholder="" v-model="difficulty_entry_1">
+              <small id="difficulty_entry_1" class="form-text text-muted">Depending on the type of difficulty, she must have different statistics.</small>
+            </div>
           </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md">
+            <div class="form-group">
+              <label for="difficulty_entry_2">Difficulty entry 2</label>
+              <input type="text" class="form-control" id="difficulty_entry_2" aria-describedby="difficulty_entry_2" placeholder="" v-model="difficulty_entry_2">
+              <small id="difficulty_entry_2" class="form-text text-muted">Depending on the type of difficulty, she must have different statistics.</small>
+            </div>
+          </div>
+          <div class="col-12 col-md">
+           <div class="form-group">
+            <label for="difficulty_entry_3">Difficulty entry 3</label>
+            <input type="text" class="form-control" id="difficulty_entry_3" aria-describedby="difficulty_entry_3" placeholder="" v-model="difficulty_entry_3">
+            <small id="difficulty_entry_3" class="form-text text-muted">Depending on the type of difficulty, she must have different statistics.</small>
+          </div>
+        </div>
+      </div>
+        
+         
           <!-- <div class="form-group">
             <label for=""></label>
             <input type="text" class="form-control" id="" aria-describedby="" placeholder="" v-model="">
@@ -417,23 +450,7 @@
             <label for=""></label>
             <input type="text" class="form-control" id="" aria-describedby="" placeholder="" v-model="">
             <small id="" class="form-text text-muted"></small>
-          </div>
-          <div class="form-group">
-            <label for=""></label>
-            <input type="text" class="form-control" id="" aria-describedby="" placeholder="" v-model="">
-            <small id="" class="form-text text-muted"></small>
-          </div>
-          <div class="form-group">
-            <label for=""></label>
-            <input type="text" class="form-control" id="" aria-describedby="" placeholder="" v-model="">
-            <small id="" class="form-text text-muted"></small>
-          </div>
-          <div class="form-group">
-            <label for=""></label>
-            <input type="text" class="form-control" id="" aria-describedby="" placeholder="" v-model="">
-            <small id="" class="form-text text-muted"></small>
-          </div> -->         
-          <button type="submit" class="btn btn-primary">Create</button>
+          </div> -->
         </form>
       </div>
     </div>
@@ -445,7 +462,10 @@
       var app = new Vue({
         el: '#app',
         data: {
-          entry: 0
+          entry: 0,
+          difficulty_entry_1: 0,
+          difficulty_entry_2: 0,
+          difficulty_entry_3: 0,
         }
       });
     </script>
