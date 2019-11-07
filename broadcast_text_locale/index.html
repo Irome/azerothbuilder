@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Azeroth Builder ES</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">Azeroth Builder ES</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Creature
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="creature/create.html">Crear SQL</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Broadcast Text
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="broadcast_text_locale/">Crear SQL</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row mt-2">
+        <div class="col">
+          <div class="jumbotron">
+            <h1 class="display-4">Broadcast Text Locale</h1>
+            <p class="lead">Con esta herramienta, usted podrá crear el SQL correspondiente para aplicar traducciones a la tabla <strong>`broadcast_text_locale`</strong>. Simplemente complete el formulario con los datos y vera como el SQL se crea en base a los datos ingresados. Copie el código y cree un <strong>pull request en algún repositorio o compártaselo a sus desarrolladores para que puedan aplicarlo en el servidor.</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="app">
+      <div class="container" id="code">
+        <code>
+          <p><span>DELETE FROM</span> `broadcast_text_locale` <span>WHERE</span> `entry`={{ ID }};</p>
+          <p><span>INSERT INTO</span> `broadcast_text_locale` (`ID`,`locale`,`MaleText`,`FemaleText`,`VerifiedBuild`) <span>VALUES</span></p>
+          <p>({{ ID }}, '{{ locale }}', '{{ MaleText}}', '{{ FemaleText }}', {{ VerifiedBuild }});</p>
+        </code>
+      </div> <!-- /container -->
+      <div class="container">
+        <form>
+          <div class="row">
+            <div class="col-12 col-md">
+              <div class="form-group">
+                <label for="IdInput">ID</label>
+                <input type="text" class="form-control" id="IdInput" aria-describedby="IdInput" placeholder="ID al que se le quiere aplicar la traducción" v-model="ID">
+                <small id="IdInput" class="form-text text-muted">ID que se obtiene de la tabla <strong>`broadcast_text`</strong></small>
+              </div>
+            </div>
+            <div class="col-12 col-md">
+              <div class="form-group">
+                <label for="LocaleInput">Locale</label>
+                <input type="text" class="form-control" id="LocaleInput" aria-describedby="LocaleInput" placeholder="" v-model="locale">
+                <small id="LocaleInput" class="form-text text-muted">Lenguaje al que se le aplica la traducción</small>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-md">
+              <div class="form-group">
+                <label for="MaleTextInput">MaleText</label>
+                <textarea class="form-control" id="MaleTextInput" rows="3" v-model="MaleText"></textarea>
+                <small id="MaleTextInput" class="form-text text-muted">Texto para los npc masculinos</small>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-md">
+              <div class="form-group">
+                <label for="FemaleTextInput">FemaleText</label>
+                <textarea class="form-control" id="FemaleTextInput" rows="3" v-model="FemaleText"></textarea>
+                <small id="FemaleTextInput" class="form-text text-muted">Texto para los npc femeninos</small>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-md">
+              <div class="form-group">
+                <label for="VerifiedBuildNumberInput">VerifiedBuild</label>
+                <input type="number" class="form-control" id="VerifiedBuildNumberInput" aria-describedby="VerifiedBuildNumberInput" placeholder="" v-model="VerifiedBuild" disabled>
+                <small id="VerifiedBuildNumberInput" class="form-text text-muted">Verified Build</small>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          ID: 0,
+          locale: 'esES',
+          MaleText: '',
+          FemaleText: '',
+          VerifiedBuild: 18019,
+        }
+      });
+    </script>
+  </body>
+</html>
